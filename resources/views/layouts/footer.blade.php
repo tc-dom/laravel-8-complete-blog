@@ -1,93 +1,95 @@
-<footer class="bg-gray-800 py-20 mt-20">
-    <div class="sm:grid grid-cols-3 w-4/5 pb-10 m-auto border-b-2 border-gray-700">
-        <div>
-            <h3 class="text-l sm:font-bold text-gray-100">
-                Pages
-            </h3>
+<footer style="background: #efefef;" class="p-5">
+    <div>
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3">
+                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+            
+                <div class="col-4 pt-1">
+          <img style="height:100px;" src="/images/rmutto_name.png" alt="" srcset="">
+        </div>
+            </div>
 
-            <ul class="py-4 sm:text-s pt-4 text-gray-400">
-                <li class="pb-1">
-                    <a href="/">
-                        Home
+            <div class="col mb-3">
+
+            </div>
+
+            <div class="col mb-3">
+                <h5>ระบบที่เกี่ยวข้อง</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="/" class="nav-link p-0 text-muted">
+                            ระบบ E-MANAGE
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="/" class="nav-link p-0 text-muted">
+                            ระบบ E-LEARNING
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="/" class="nav-link p-0 text-muted">
+                            ระบบ LIBRARY ONLINE
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">โครงการอันเนื่องมาจากพระราชดำริ</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">จดหมายเหตุบางพระ</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">ชมรมผู้อาวุโส</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">ส่งบทความวิจัย</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">มาตรการรับมือ COVID-19 RMUTTO</a></li>
+                </ul>
+            </div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก43 ม.6 ต.บางพระ อ.ศรีราชา จ.ชลบุรี 20110</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">โทรศัพท์:033-136-099</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">หมายเลขโทรศัพท์ภายใน</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">อีเมล์: saraban@rmutto.ac.th</a></li>
+                </ul>
+            </div>
+
+
+        </footer>
+        <div>
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                        <svg class="bi" width="30" height="24">
+                            <use xlink:href="#bootstrap"></use>
+                        </svg>
                     </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/blog">
-                        Blog
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/login">
-                        Login
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/register">
-                        Register
-                    </a>
-                </li>
-            </ul>
+                    <span class="mb-3 mb-md-0 ">
+                        Copyright © 2017-2022 Rajamangala University of Technology Tawan-ok. All rights reserved
+                    </span>
+                </div>
+
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                                <use xlink:href="#twitter"></use>
+                            </svg></a></li>
+                    <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                                <use xlink:href="#instagram"></use>
+                            </svg></a></li>
+                    <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                                <use xlink:href="#facebook"></use>
+                            </svg></a></li>
+                </ul>
+            </footer>
         </div>
 
-        <div>
-            <h3 class="text-l sm:font-bold text-gray-100">
-                Find Us
-            </h3>
-
-            <ul class="py-4 sm:text-s pt-4 text-gray-400">
-                <li class="pb-1">
-                    <a href="/">
-                        What we do
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Address
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Phone
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div>
-            <h3 class="text-l sm:font-bold text-gray-100">
-                Latest posts
-            </h3>
-
-            <ul class="py-4 sm:text-s pt-4 text-gray-400">
-                <li class="pb-1">
-                    <a href="/">
-                        Why we love tech
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Why we love design
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Why to use Laravel
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Why PHP is the best
-                    </a>
-                </li>
-            </ul>
-        </div>
     </div>
-    <p class="w-25 w-4/5 pb-3 m-auto text-xs text-gray-100 pt-6">
-        Copyright 2017-2021 Code With Dary. All Rights Reserved
-    </p>
+
 </footer>

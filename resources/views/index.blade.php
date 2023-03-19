@@ -1,100 +1,168 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="background-image grid grid-cols-1 m-auto">
-        <div class="flex text-gray-100 pt-10">
-            <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block text-center">
-                <h1 class="sm:text-white text-5xl uppercase font-bold text-shadow-md pb-14">
-                    Do you want to become a developer?
-                </h1>
-                <a 
-                    href="/blog"
-                    class="text-center bg-gray-50 text-gray-700 py-2 px-4 font-bold text-xl uppercase">
-                    Read More
-                </a>
+<main class="container">
+
+    <div class="grid grid-cols-1 m-auto mb-5" style="background-image: url(
+    'images/rmutto.jpg'
+);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 500px;">
+        <div class="p-4 p-md-5 mb-4 text-white rounded">
+            <div class="col-md-6 px-0">
+                <h1 class="display-4 fst-italic">Rajamangala university of technology</h1>
+                <p class="lead my-3">เอกลักษณ์ของมหาวิทยาลัย : มหาวิทยาลัยนำความรู้สู่สังคม อัตลักษณ์ของมหาวิทยาลัย : บัณฑิตนักปฏิบัติ</p>
+
             </div>
         </div>
     </div>
 
-    <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
-        <div>
-            <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg" width="700" alt="">
+
+    <div>
+        @if (session()->has('message'))
+        <div class="w-4/5 m-auto mt-10 pl-2">
+            <p class="w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4">
+                {{ session()->get('message') }}
+            </p>
         </div>
+        @endif
 
-        <div class="m-auto sm:m-auto text-left w-4/5 block">
-            <h2 class="text-3xl font-extrabold text-gray-600">
-                Struggling to be a better web developer?
-            </h2>
-            
-            <p class="py-8 text-gray-500 text-s">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus.
-            </p>
-
-            <p class="font-extrabold text-gray-600 text-s pb-9">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente magnam vero nostrum! Perferendis eos molestias porro vero. Vel alias.
-            </p>
-
-            <a 
-                href="/blog"
-                class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
-                Find Out More
+        @if (Auth::check())
+        <div class="pt-15 w-4/5 m-auto">
+            <a href="/blog/create" class="btn btn-primary mb-5">
+                Create post
             </a>
         </div>
+        @endif
+    </div>
+    <h1 class="mb-5">ข่าวสารจากมหาลัย</h1>
+    <div class="row mb-2">
+
+        @foreach ($posts as $post)
+
+
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="img-fluid rounded-start" style="height:100%;width:100%;object-fit:cover;" src="{{ asset('images/' . $post->image_path) }}" alt="">
+
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <a href="/blog/{{ $post->slug }}" class="link-dark text-decoration-none">
+                                <h5 class="card-title">{{ $post->title }}</h5>
+                            </a>
+                            <p class="card-text">
+                                @if ($post->categories)
+                                @foreach ($post->categories as $category)
+                                <a class="badge bg-light text-dark" href="{{ route('category.show', $category->name) }}">{{ $category->name }}</a>
+                                @endforeach
+                                @endif
+
+                            </p>
+                            <p class="card-text"><small class="text-muted">
+
+                                    @if($post->user->name)
+                                    By <span>{{ $post->user->name }}</span>, Created on {{ date('jS M Y', strtotime($post->updated_at)) }}
+
+                                    @endif
+                                </small></p>
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        @endforeach
+
+
+
     </div>
 
-    <div class="text-center p-15 bg-black text-white">
-        <h2 class="text-2xl pb-5 text-l"> 
-            I'm an expert in...
-        </h2>
 
-        <span class="font-extrabold block text-4xl py-1">
-            Ux Design
-        </span>
-        <span class="font-extrabold block text-4xl py-1">
-            Project Management
-        </span>
-        <span class="font-extrabold block text-4xl py-1">
-            Digital Strategy
-        </span>
-        <span class="font-extrabold block text-4xl py-1">
-            Backend Development
-        </span>
+    <div class="d-block mb-5" style="text-align:right">
+
+        <a href="/blog" class="btn btn-secondary btn-sm">อ่านเพิ่มเติม</a>
     </div>
 
-    <div class="text-center py-15">
-        <span class="uppercase text-s text-gray-400">
-            Blog
-        </span>
+    <div class="row g-5">
+        <div class="col-md-8">
 
-        <h2 class="text-4xl font-bold py-10">
-            Recent Posts
-        </h2>
 
-        <p class="m-auto w-4/5 text-gray-500">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque exercitationem saepe enim veritatis, eos temporibus quaerat facere consectetur qui.
-        </p>
-    </div>
+            <article class="blog-post">
+                <h2 class="blog-post-title">ประวัติความเป็นมา</h2>
+                <p class="blog-post-meta">Mar 19, 2023 by <a href="#">RMUTTO</a></p>
 
-    <div class="sm:grid grid-cols-2 w-4/5 m-auto">
-        <div class="flex bg-yellow-700 text-gray-100 pt-10">
-            <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
-                <span class="uppercase text-xs">
-                    PHP
-                </span>
+                <p> มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก เป็นมหาวิทยาลัยด้านวิทยาศาสตร์และเทคโนโลยี จัดตั้งขึ้นตามพระราชบัญญัติมหาวิทยาลัยเทคโนโลยีราชมงคล พ.ศ. 2548 ซึ่งได้รับ การประกาศ ในราชกิจจานุเบกษาและมีผลบังคับใช้ตั้งแต่วันที่ 19 มกราคม 2548 เป็นต้นมา โดยในพระราชบัญญัติ ฉบับนี้ ได้กำหนดให้รวมกลุ่มวิทยาเขตในสังกัดสถาบันเทคโนโลยีราชมงคล จำนวน 4 วิทยาเขตและ 1 คณะ ตามมาตรา 65(3) ได้แก่ วิทยาเขตจักรพงษภูวนารถ วิทยาเขตอุเทนถวาย วิทยาเขตบางพระ วิทยาเขตจันทบุรี และคณะเกษตรศาสตร์บางพระ พร้อมทั้งให้ยกฐานะขึ้นเป็นมหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก ตามมาตรา 5(3)
 
-                <h3 class="text-xl font-bold py-10">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas necessitatibus dolorum error culpa laboriosam. Enim voluptas earum repudiandae consequuntur ad? Expedita labore aspernatur facilis quasi ex? Nemo hic placeat et?
-                </h3>
+                    มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก จัดการศึกษาทั้งในระดับปริญญาโท ปริญญาตรี และระดับต่ำกว่าปริญญาตรี ในสาขาวิชาชีพต่างๆ กระจายอยู่ตามวิทยาเขตในสังกัดทั้ง 4 แห่ง ตามความเชี่ยวชาญเฉพาะทางของแต่ละวิทยาเขต ซึ่งหน่วยงานแต่ละแห่งของมหาวิทยาลัยฯล้วนมีประวัติในการก่อตั้ง และจัดการศึกษาด้านวิชาชีพไม่น้อยกว่า 50 ปี ดังนั้น มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก จึงจัดเป็นมหาวิทยาลัยทางด้านวิทยาศาสตร์และเทคโนโลยี 1 ใน 15 แห่ง ที่จัดการศึกษาระดับ ปริญญาสายวิชาชีพ ด้วยความเชี่ยวชาญมาอย่างยาวนานแห่งหนึ่งของประเทศไทย</p>
+                <h2>Blockquotes</h2>
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/hIIVPkf7DwM?start=6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
 
-                <a 
-                    href=""
-                    class="uppercase bg-transparent border-2 border-gray-100 text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
-                    Find Out More
-                </a>
+        <div class="col-md-4">
+            <div class="position-sticky" style="top: 2rem;">
+                <div class="p-4 mb-3 bg-light rounded">
+                    <a href="https://rmuttoautonomous.rmutto.ac.th">
+                        <h4 class="fst-italic">อ่านเลยยย</h4>
+                    </a>
+
+                    <p class="mb-0">เรื่องเด่นในรั้ว มทร.
+                        ร่วมศึกษาข้อมูลการเป็นมหาวิทยาลัยในกำกับของรัฐ
+
+                        ร่วมศึกษาข้อมูลการเป็นมหาวิทยาลัยในกำกับของรัฐ ได้ที่
+
+                    </p>
+                </div>
+
+                <div class="p-4">
+                    <h4 class="fst-italic">การเข้าถึง</h4>
+                    <ol class="list-unstyled mb-0">
+                        <li><a href="http://regis.rmutto.ac.th/registrar/home.asp">ระบบทะเบียนออนไลน์</a></li>
+                        <li><a href="http://library.rmutto.ac.th/liberty/main.do">ระบบห้องสมุดอัตโนมัติ</a></li>
+                        <li><a href="https://lib.rmutto.ac.th/?page_id=1812">ระบบหนังสืออิเล็กทรอนิกส์</a></li>
+                        <li><a href="https://template.rmutto.ac.th/studentemail/">ระบบอีเมล์นักศึกษา</a></li>
+                        <li><a href="https://lib.rmutto.ac.th/?page_id=1812">ฐานข้อมูลออนไลน์</a></li>
+                        <li><a href="https://tablet.rmutto.ac.th/regis/">ระบบยืมเเท็ปเเล็ต</a></li>
+                        <li><a href="https://e-manage.rmutto.ac.th/">ระบบ e-manage RMUTTO</a></li>
+                        <li><a href="http://mis.rmutto.ac.th/">ระบบ MIS</a></li>
+                        <li><a href="https://template.rmutto.ac.th/personemail/">ระบบอีเมล์บุคลากร</a></li>
+                        <li><a href="https://ita.rmutto.ac.th/">ITA 2565</a></li>
+                        <li><a href="https://ita.rmutto.ac.th/">ITA 2564</a></li>
+                        <li><a href="https://www.rmutto.ac.th/index.php?menu=ita63">ITA 2563</a></li>
+                        <li><a href="https://www.rmutto.ac.th/index.php?menu=ita62">ITA 2562</a></li>
+                    </ol>
+                </div>
+
+                <div class="p-4">
+                    <h4 class="fst-italic">Elsewhere</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="https://www.youtube.com/user/RMUTTOChannel">YouTube</a></li>
+                        <li><a href="https://page.line.me/251opcbo?openQrModal=true">Line</a></li>
+                        <li><a href="https://twitter.com/RMUTT0">Twitter</a></li>
+                        <li><a href="https://www.facebook.com/rmutto.ac.th/">Facebook</a></li>
+                    </ol>
+                </div>
             </div>
         </div>
-        <div>
-            <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg" alt="">
-        </div>
     </div>
+
+</main>
+
+
+
+
+
+
+
+
+
+
 @endsection
